@@ -26,7 +26,7 @@ class ProduitsApplicationTests {
 
     @Test
     public void testCreateProduct() {
-        Produit prod = new Produit("PC Acer",2700.500,new Date());
+        Produit prod = new Produit("Iphone X",1099.900,new Date());
         produitRepository.save(prod);
     }
     @Test
@@ -47,6 +47,20 @@ class ProduitsApplicationTests {
     @Test
     public void testListerToosProducts() {
         List<Produit> prods = produitRepository.findAll();
+        for (Produit p : prods) {
+            System.out.println(p);
+        }
+    }
+    @Test
+    public void testFindByNomProduit() {
+        List<Produit> prods = produitRepository.findByNomProduit("Iphone X");
+        for (Produit p : prods) {
+            System.out.println(p);
+        }
+    }
+    @Test
+    public void testFindByNomProduitContains () {
+        List<Produit> prods=produitRepository.findByNomProduitContains("iphone");
         for (Produit p : prods) {
             System.out.println(p);
         }
