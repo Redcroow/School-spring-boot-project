@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.madhem.product_project.entities.Produit;
+import com.madhem.product_project.entities.Categorie;
 import com.madhem.product_project.repository.ProduitRepository;
 
 @SpringBootApplication
@@ -68,6 +69,15 @@ class ProduitsApplicationTests {
     @Test
     public void testfindByNomContainNPrix() {
         List<Produit> prods = produitRepository.findByNomContainNPrix("Iphone X", 1000.0);
+        for (Produit p : prods) {
+            System.out.println(p);
+        }
+    }
+    @Test
+    public void testfindByCategorie() {
+        Categorie cat = new Categorie();
+        cat.setIdCat(1L);
+        List<Produit> prods = produitRepository.findByCategorie(cat);
         for (Produit p : prods) {
             System.out.println(p);
         }
