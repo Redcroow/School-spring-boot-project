@@ -10,6 +10,7 @@ import java.util.List;
 
 public interface ProduitRepository extends JpaRepository<Produit, Long> {
     List<Produit> findByNomProduit(String nom);
+
     List<Produit> findByNomProduitContains(String nom);
 
     @Query("select p from Produit p where p.nomProduit like concat('%', :nomSearch, '%') and p.prixProduit > :prixMinimum")
@@ -19,4 +20,6 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
     List<Produit> findByCategorie(@Param("nomCat") String nomCat);
 
     List<Produit> findByCategorieIdCat(Long id);
+
+    List<Produit> findByOrderByNomProduitAsc();
 }
