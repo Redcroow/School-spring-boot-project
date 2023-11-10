@@ -23,38 +23,32 @@ public class SpringStarterProjectApplication {
 class ProduitsApplicationTests {
     @Autowired
     private ProduitRepository produitRepository;
+
     @Test
     public void testCreateProduct() {
         Produit prod = new Produit("PC Acer",2700.500,new Date());
         produitRepository.save(prod);
     }
     @Test
-    public void testFindProduct()
-    {
+    public void testFindProduct() {
         Produit p = produitRepository.findById(1L).get();
-
         System.out.println(p);
     }
     @Test
-    public void testUpdateProduct()
-    {
+    public void testUpdateProduct() {
         Produit p = produitRepository.findById(1L).get();
         p.setPrixProduit(4000.0);
         produitRepository.save(p);
     }
     @Test
-    public void testDeleteProduct()
-    {
+    public void testDeleteProduct() {
         produitRepository.deleteById(1L);;
     }
     @Test
-    public void testListerToosProducts()
-    {
+    public void testListerToosProducts() {
         List<Produit> prods = produitRepository.findAll();
-        for (Produit p : prods)
-        {
+        for (Produit p : prods) {
             System.out.println(p);
         }
-
     }
 }
