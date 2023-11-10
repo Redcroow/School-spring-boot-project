@@ -10,4 +10,11 @@ public interface ProduitService {
     void deleteProduitById(Long id);
     Produit getProduit(Long id);
     List<Produit> getAllProduits();
+    List<Produit> findByNomProduit(String nom);
+    List<Produit> findByNomProduitContains(String nom);
+    List<Produit> findByNomContainNPrix (String nom, Double prix);
+    List<Produit> findByCategorie (String nomCat);
+    List<Produit> findByCategorieIdCat(Long id);
+    List<Produit> findByOrderByNomProduitAsc();
+    List<Produit> trierProduitsNomsPrix();
 }
