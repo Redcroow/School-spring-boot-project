@@ -9,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.madhem.product_project.entities.Produit;
+import com.madhem.product_project.entities.Categorie;
 import com.madhem.product_project.repository.ProduitRepository;
 
 @SpringBootApplication
@@ -26,7 +27,7 @@ class ProduitsApplicationTests {
 
     @Test
     public void testCreateProduct() {
-        Produit prod = new Produit("Iphone X",1099.900,new Date());
+        Produit prod = new Produit("Iphone 14 Pro Max",1499.900,new Date());
         produitRepository.save(prod);
     }
     @Test
@@ -36,8 +37,8 @@ class ProduitsApplicationTests {
     }
     @Test
     public void testUpdateProduct() {
-        Produit p = produitRepository.findById(1L).get();
-        p.setPrixProduit(4000.0);
+        Produit p = produitRepository.findById(5L).get();
+        p.setNomProduit("Iphone X Pro Max");
         produitRepository.save(p);
     }
     @Test
@@ -61,6 +62,27 @@ class ProduitsApplicationTests {
     @Test
     public void testFindByNomProduitContains () {
         List<Produit> prods=produitRepository.findByNomProduitContains("iphone");
+        for (Produit p : prods) {
+            System.out.println(p);
+        }
+    }
+    @Test
+    public void testfindByNomContainNPrix() {
+        List<Produit> prods = produitRepository.findByNomContainNPrix("Iphone X", 1000.0);
+        for (Produit p : prods) {
+            System.out.println(p);
+        }
+    }
+    @Test
+    public void testfindByCategorie() {
+        List<Produit> prods = produitRepository.findByCategorie("Telephone");
+        for (Produit p : prods) {
+            System.out.println(p);
+        }
+    }
+    @Test
+    public void findByCategorieIdCat() {
+        List<Produit> prods = produitRepository.findByCategorieIdCat(2L);
         for (Produit p : prods) {
             System.out.println(p);
         }
