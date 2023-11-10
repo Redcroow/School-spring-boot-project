@@ -17,4 +17,6 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
 
     @Query("select p from Produit p where p.categorie.nomCat = :nomCat")
     List<Produit> findByCategorie(@Param("nomCat") String nomCat);
+
+    List<Produit> findByCategorieIdCat(Long id);
 }
