@@ -75,9 +75,7 @@ class ProduitsApplicationTests {
     }
     @Test
     public void testfindByCategorie() {
-        Categorie cat = new Categorie();
-        cat.setIdCat(1L);
-        List<Produit> prods = produitRepository.findByCategorie(cat);
+        List<Produit> prods = produitRepository.findByCategorie("Telephone");
         for (Produit p : prods) {
             System.out.println(p);
         }
