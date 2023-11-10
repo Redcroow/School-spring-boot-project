@@ -11,6 +11,6 @@ public interface ProduitRepository extends JpaRepository<Produit, Long> {
     List<Produit> findByNomProduit(String nom);
     List<Produit> findByNomProduitContains(String nom);
 
-    @Query("select p from Produit p where p.nomProduit like %:nom and p.prixProduit > :prix")
-    List<Produit> findByNomPrix (@Param("nomSearch") String nom, @Param("prixMinimum") Double prix);
+    @Query("select p from Produit p where p.nomProduit like concat('%', :nomSearch, '%') and p.prixProduit > :prixMinimum")
+    List<Produit> findByNomContainNPrix (@Param("nomSearch") String nom, @Param("prixMinimum") Double prix);
 }

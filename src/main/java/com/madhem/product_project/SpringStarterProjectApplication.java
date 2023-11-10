@@ -36,8 +36,8 @@ class ProduitsApplicationTests {
     }
     @Test
     public void testUpdateProduct() {
-        Produit p = produitRepository.findById(1L).get();
-        p.setPrixProduit(4000.0);
+        Produit p = produitRepository.findById(5L).get();
+        p.setNomProduit("Iphone X Pro Max");
         produitRepository.save(p);
     }
     @Test
@@ -66,8 +66,8 @@ class ProduitsApplicationTests {
         }
     }
     @Test
-    public void testfindByNomPrix() {
-        List<Produit> prods = produitRepository.findByNomPrix("iphone X", 1000.0);
+    public void testfindByNomContainNPrix() {
+        List<Produit> prods = produitRepository.findByNomContainNPrix("Iphone X", 1000.0);
         for (Produit p : prods) {
             System.out.println(p);
         }
